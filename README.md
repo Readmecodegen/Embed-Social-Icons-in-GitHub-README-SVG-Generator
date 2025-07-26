@@ -146,34 +146,34 @@ In this example, `ff0000` sets the Twitter icon's color to red.
 ### Default Icon (Brand Color, 32px, Transparent)
 This is the default appearance of the icon. It uses the brand's official color, is sized at 32 pixels, and has a transparent background.
 
-![GitHub](https://readmecodegen.vercel.app/api/social-icon?name=github)
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github)
 
 
 
 ### Custom Color & Size
 ```markdown
-![Twitter Blue](https://readmecodegen.vercel.app/api/social-icon?name=twitter&color=1da1f2&size=48)
+![x](https://readmecodegen.vercel.app/api/social-icon?name=twitter&color=1da1f2&size=48)
 ```
 
 
 
 ### Dark Theme
 ```markdown
-![GitHub](https://readmecodegen.vercel.app/api/social-icon?name=github&theme=dark)
+![whatsapp](https://readmecodegen.vercel.app/api/social-icon?name=github&theme=dark)
 ```
 
 
 
 ### Solid Background
 ```markdown
-![LinkedIn](https://readmecodegen.vercel.app/api/social-icon?name=linkedin&bg=ffffff)
+![linkedin](https://readmecodegen.vercel.app/api/social-icon?name=linkedin&size=28)
 ```
 
 
 
 ### Clickable Icon (Profile Link)
 ```markdown
-[![GitHub](https://readmecodegen.vercel.app/api/social-icon?name=github)](https://github.com/yourusername)
+[![gitHub](https://readmecodegen.vercel.app/api/social-icon?name=github)](https://github.com/yourusername)
 ```
 
 
@@ -185,8 +185,8 @@ src="https://readmecodegen.vercel.app/api/social-icon?name=twitter&size=40"
 alt="Twitter"
 />
 ```
+<img src="https://readmecodegen.vercel.app/api/social-icon?name=html5&size=28" alt="html5" style="pointer-events: none;" />
 
----
 
 
 
