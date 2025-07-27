@@ -14,6 +14,8 @@
 - [4. `bg` (optional)](#4-bg-optional)
 - [5. `shape` (optional)](#5-shape-optional)
 - [6. `theme` (optional)](#6-theme-optional)
+- [7. `text` (optional)](#7-text-optional)
+- [8. `textAlign` (optional)](#8-textalign-optional)
 - [Usage Examples](#usage-examples)
 - [Default Icon (Brand Color, 32px, Transparent)](#default-icon-brand-color-32px-transparent)
 - [Custom Color & Size](#custom-color--size)
@@ -21,10 +23,15 @@
 - [Solid Background](#solid-background)
 - [Circular Background](#circular-background)
 - [Rectangular Background](#rectangular-background)
+- [Text with Icons](#text-with-icons)
+- [Horizontal Text Alignment](#horizontal-text-alignment)
+- [Vertical Text Alignment](#vertical-text-alignment)
+- [Text with Backgrounds](#text-with-backgrounds)
 - [Clickable Icon (Profile Link)](#clickable-icon-profile-link)
 - [HTML Usage](#html-usage)
 - [Brand Color Logic](#brand-color-logic)
 - [Theme & Background Handling](#theme--background-handling)
+- [Text Feature Details](#text-feature-details)
 - [Why Each Feature Exists](#why-each-feature-exists)
 - [Available Icon Categories & Names](#available-icon-categories--names)
 - [How to Find Icon Names](#how-to-find-icon-names)
@@ -58,14 +65,16 @@ Think of this as the address you'll use to request icons. Instead of a webpage, 
 
 ## Parameters
 
-| Parameter | Type     | Required | Description                                                                        | Example Value       |
-| --------- | -------- | -------- | ---------------------------------------------------------------------------------- | ------------------- |
-| `name`    | string   | Yes      | The icon's identifier (see available icons below)                                  | `github`, `twitter` |
-| `color`   | hex      | No       | Hex color code (without `#`) for the icon. Defaults to brand color or theme logic. | `1da1f2`, `ff0000`  |
-| `size`    | int      | No       | Icon size in pixels. Default: `32`                                                 | `48`, `64`          |
-| `bg`      | hex/word | No       | Background color (hex or `transparent`). Default: `transparent`                    | `ffffff`, `000000`  |
-| `shape`   | string   | No       | Background shape: `rect` (rectangle) or `circle`. Default: `rect`                  | `circle`, `rect`    |
-| `theme`   | string   | No       | Icon theme: `light`, `dark`, `github`. Default: `light`                            | `dark`              |
+| Parameter   | Type     | Required | Description                                                                        | Example Value       |
+| ----------- | -------- | -------- | ---------------------------------------------------------------------------------- | ------------------- |
+| `name`      | string   | Yes      | The icon's identifier (see available icons below)                                  | `github`, `twitter` |
+| `color`     | hex      | No       | Hex color code (without `#`) for the icon. Defaults to brand color or theme logic. | `1da1f2`, `ff0000`  |
+| `size`      | int      | No       | Icon size in pixels. Default: `32`                                                 | `48`, `64`          |
+| `bg`        | hex/word | No       | Background color (hex or `transparent`). Default: `transparent`                    | `ffffff`, `000000`  |
+| `shape`     | string   | No       | Background shape: `rect` (rectangle) or `circle`. Default: `rect`                  | `circle`, `rect`    |
+| `theme`     | string   | No       | Icon theme: `light`, `dark`, `github`. Default: `light`                            | `dark`              |
+| `text`      | string   | No       | Text to display with the icon                                                      | `GitHub`, `Follow`  |
+| `textAlign` | string   | No       | Text alignment: `horizontal` or `vertical`. Default: `vertical`                    | `horizontal`        |
 
 ---
 
@@ -84,14 +93,15 @@ This tells the API to generate the GitHub icon.
 
 ### 2. `color` (Optional)
 
-- **What it is:** A hex color code (without the `#`) to customize the icon's color.
+- **What it is:** A hex color code (without the `#`) replace `#` with `%`  to customize the icon's color.
+  Exappmle - `color=%ff0000`
 
 - **Why use it?:** By default, the icon uses a brand-specific color (light theme), white (dark theme), or black (GitHub theme). This parameter allows you to override the default color with a color of your choice.
 
 - **How to use it:**
-  `https://readmecodegen.vercel.app/api/social-icon?name=twitter&color=ff0000`
+  `https://readmecodegen.vercel.app/api/social-icon?name=twitter&color=%ff0000`
 
-In this example, `ff0000` sets the Twitter icon's color to red.
+In this example, `%ff0000` sets the Twitter icon's color to red.
 
 - **When to use it:** Use this parameter to match the icon's color to your website's color scheme or create a specific visual effect.
 
@@ -105,9 +115,9 @@ In this example, `ff0000` sets the Twitter icon's color to red.
 
 ### 4. `bg` (optional)
 
-- **What it is:** Specifies the background color for the icon. You can use a hex color code (e.g., `8b5cf6` for purple, without the `#`) or the keyword `transparent` for no background.
+- **What it is:** Specifies the background color for the icon. You can use a hex color code (e.g., `%8b5cf6` for purple, without the `#`) or the keyword `transparent` for no background.
 
-- **Why it's useful:** It helps the icon stand out, especially if your website or README already has a background color.
+- **Why it's useful:** It helps the icon stand out, especially if your website or README already has a background color.If the icon and bg both white then u can change icon by color to black so the icon appear white.Or you can also customize the icon color according to the background.
 
 - **How to use it:** Add `&bg=` followed by your color choice to the URL. For example:
   `https://readmecodegen.vercel.app/api/social-icon?name=linkedin&bg=%238b5cf6` adds a purple background to the LinkedIn icon.
@@ -145,6 +155,33 @@ In this example, `ff0000` sets the Twitter icon's color to red.
 - **How to use:**
   `https://readmecodegen.vercel.app/api/social-icon?name=github&theme=dark`
 - **When:** Use this parameter to ensure icons are clearly visible on any background.
+
+### 7. `text` (optional)
+
+- **What it is:** The text to display alongside the icon. This can be the icon name, a label, or any descriptive text.
+
+- **Why use it?** Adding text to icons makes them more descriptive and informative, especially useful for accessibility and clarity in documentation.
+
+- **How to use it:**
+- `showText=true` automatically add icon label or name.
+  
+  `![tiktok](https://readmecodegen.vercel.app/api/social-icon?name=tiktok&size=48&bg=%23000000&shape=circle&showText=true)`
+
+- **When to use it:** Use this parameter when you want to add descriptive text to your icons, making them more informative and accessible.
+
+### 8. `textAlign` (optional)
+
+- **What it is:** Controls how the text is positioned relative to the icon. Accepts `horizontal` (text beside icon) or `vertical` (text below icon).
+
+- **Why use it?** Different text alignments work better in different layouts. Horizontal alignment is great for inline text, while vertical alignment works well for stacked layouts.
+
+- **How to use it:**
+- The alignment property only works when  `showText=true`
+
+  - Horizontal: `https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=horizontal`
+  - Vertical: `https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=vertical`
+
+- **When to use it:** Use `horizontal` for inline text layouts and `vertical` for stacked or centered layouts.
 
 ---
 
@@ -186,10 +223,50 @@ This is the default appearance of the icon. It uses the brand's official color, 
 ![twitter](https://readmecodegen.vercel.app/api/social-icon?name=twitter&bg=%238b5cf6&size=32)
 ```
 
+### Text with Icons
+
+#### Basic Text (Vertical Alignment - Default)
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&text=GitHub)
+```
+
+#### Horizontal Text Alignment
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=horizontal)
+```
+
+#### Vertical Text Alignment (Explicit)
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=vertical)
+```
+
+### Text with Backgrounds
+
+#### Horizontal Text with Circular Background
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=horizontal&bg=%238b5cf6&shape=circle)
+```
+
+#### Vertical Text with Rectangular Background
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&text=GitHub&textAlign=vertical&bg=%238b5cf6)
+```
+
+#### Text with Custom Color and Theme
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=horizontal&color=ffffff&theme=dark&bg=%23000000)
+```
+
 ### Clickable Icon (Profile Link)
 
 ```markdown
-[![gitHub](https://readmecodegen.vercel.app/api/social-icon?name=github)](https://github.com/yourusername)
+[![whatsapp](https://readmecodegen.vercel.app/api/social-icon?name=github)](https://github.com/yourusername)
 ```
 
 ### HTML Usage
@@ -222,6 +299,40 @@ This is the default appearance of the icon. It uses the brand's official color, 
 
 ---
 
+## Text Feature Details
+
+### Text Alignment Options
+
+- **Vertical (Default)**: Text appears below the icon, centered horizontally
+- **Horizontal**: Text appears beside the icon, aligned to the left of the text area
+
+### Text Styling
+
+- **Font Family**: Arial, sans-serif
+- **Font Size**: 9px for horizontal, 9px for vertical
+- **Font Weight**: 500 (medium)
+- **Color**: Inherits the icon color by default
+- **Text Anchor**:
+  - Horizontal: `start` (left-aligned)
+  - Vertical: `middle` (center-aligned)
+
+### Text Positioning
+
+- **Horizontal Alignment**: Text starts 2px from the icon edge (x="26")
+- **Vertical Alignment**: Text is centered horizontally and positioned 9px below the icon (y="33")
+
+### ViewBox Behavior
+
+- **Horizontal**: ViewBox width expands to accommodate text, height remains 24px
+- **Vertical**: ViewBox width expands for text centering, height expands to 38px for text below
+
+### Scaling Behavior
+
+- **Horizontal**: SVG width scales proportionally with viewBox width
+- **Vertical**: SVG width stays fixed to prevent content scaling down
+
+---
+
 ## Why Each Feature Exists
 
 - **Brand color logic:** Ensures icons maintain an authentic and professional appearance by default.
@@ -233,6 +344,8 @@ This is the default appearance of the icon. It uses the brand's official color, 
 - **Short, clean URLs:** Simplifies copying, pasting, and maintaining icon references.
 - **Clickable icons:** Facilitates easy linking to social profiles directly within markdown.
 - **Multiple icon categories:** Offers a wide selection of icons for social media, code-related projects, utilities, and symbolic representations, catering to diverse use cases.
+- **Text support:** Enhances accessibility and clarity by allowing descriptive text alongside icons, making them more informative and user-friendly.
+- **Flexible text alignment:** Provides both horizontal and vertical text positioning to accommodate different layout requirements and design preferences.
 
 ---
 
@@ -332,6 +445,9 @@ This is the default appearance of the icon. It uses the brand's official color, 
 - **GitHub-style black icon:** `https://readmecodegen.vercel.app/api/social-icon?name=github&theme=github`
 - **Circular background with custom color:** `https://readmecodegen.vercel.app/api/social-icon?name=react&bg=%2361dafb&shape=circle&size=40`
 - **Rectangular background with dark theme:** `https://readmecodegen.vercel.app/api/social-icon?name=node&bg=%23339933&theme=dark&size=36`
+- **Text with horizontal alignment:** `https://readmecodegen.vercel.app/api/social-icon?name=github&text=GitHub&textAlign=horizontal&size=40`
+- **Text with vertical alignment and background:** `https://readmecodegen.vercel.app/api/social-icon?name=twitter&text=Follow&textAlign=vertical&bg=%238b5cf6&shape=circle`
+- **Complex text example:** `https://readmecodegen.vercel.app/api/social-icon?name=linkedin&text=Connect&textAlign=horizontal&color=ffffff&theme=dark&bg=%230077b5&size=48`
 
 ---
 
@@ -346,6 +462,10 @@ This is the default appearance of the icon. It uses the brand's official color, 
 - The `shape` parameter only works when a background color is specified.
 - Circular backgrounds work well with social media icons and modern UI designs.
 - Rectangular backgrounds are better for technical icons and structured documentation.
+- Use `text` parameter to make icons more descriptive and accessible.
+- Use `textAlign=horizontal` for inline text layouts and `textAlign=vertical` for stacked layouts.
+- Keep text concise for better visual balance, especially with horizontal alignment.
+- Consider using backgrounds with text to improve readability and visual appeal.
 
 ---
 
@@ -356,9 +476,17 @@ This is the default appearance of the icon. It uses the brand's official color, 
 - **Background shape not working?** Make sure you've specified a background color (`bg` parameter) - shapes only apply with colored backgrounds.
 - **Hydration error?** Use absolute URLs with your domain for maximum compatibility.
 - **SVG not rendering?** Some platforms might block external SVGs. If necessary, download the SVG and host it locally.
+- **Text not showing?** Ensure the `text` parameter is properly URL-encoded for special characters.
+- **Text alignment not working?** Verify that `textAlign` is set to either `horizontal` or `vertical` (case-sensitive).
 
 **Q: Why isn't my background shape working?**
 A: The `shape` parameter only works when you specify a background color using the `bg` parameter. With transparent backgrounds, the shape is ignored.
+
+**Q: Why isn't my text showing up?**
+A: Make sure the `text` parameter is included and properly URL-encoded. Special characters should be encoded (e.g., spaces as `%20`).
+
+**Q: Which text alignment should I use?**
+A: Use `horizontal` for inline text layouts and `vertical` for stacked or centered layouts. Horizontal works well in navigation bars, while vertical is great for feature lists.
 
 ---
 
@@ -415,6 +543,15 @@ A: Use circular backgrounds for modern, clean designs and social media icons. Us
 
 **Q: Why isn't my background shape working?**
 A: The `shape` parameter only works when you specify a background color using the `bg` parameter. With transparent backgrounds, the shape is ignored.
+
+**Q: Can I use text with any icon?**
+A: Yes! The text feature works with all available icons. Simply add the `text` parameter with your desired text.
+
+**Q: How do I encode special characters in text?**
+A: Use URL encoding for special characters. For example, spaces become `%20`, and special symbols should be properly encoded.
+
+**Q: What's the difference between horizontal and vertical text alignment?**
+A: Horizontal alignment places text beside the icon (great for inline layouts), while vertical alignment places text below the icon (great for stacked layouts).
 
 ---
 
