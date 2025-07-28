@@ -16,6 +16,7 @@
 - [6. `theme` (optional)](#6-theme-optional)
 - [7. `text` (optional)](#7-text-optional)
 - [8. `textAlignment` (optional)](#8-textalignment-optional)
+- [9. `textColor` (optional)](#9-textalignment-optional)
 - [Usage Examples](#usage-examples)
 - [Default Icon (Brand Color, 32px, Transparent)](#default-icon-brand-color-32px-transparent)
 - [Custom Color & Size](#custom-color--size)
@@ -76,6 +77,7 @@ Think of this as the address you'll use to request icons. Instead of a webpage, 
 | `showText`      | boolean  | No       | Show icon name as text. Default: `false`                                           | `true`              |
 | `text`          | string   | No       | Custom text to display with the icon                                               | `GitHub`, `Follow`  |
 | `textAlignment` | string   | No       | Text alignment: `horizontal` or `vertical`. Default: `vertical`                    | `horizontal`        |
+| `textColor`     | hex      | No       | Text color (hex without `#`). Defaults to icon color (brand color)                 | `ff0000`, `ffffff`  |
 
 ---
 
@@ -121,8 +123,8 @@ In this example, `%ff0000` sets the Twitter icon's color to red.
 - **Why it's useful:** It helps the icon stand out, especially if your website or README already has a background color.If the icon and bg both white then u can change icon by color to black so the icon appear white.Or you can also customize the icon color according to the background.
 
 - **How to use it:** Add `&bg=` followed by your color choice to the URL. For example:
-  `https://readmecodegen.vercel.app/api/social-icon?name=linkedin&bg=%238b5cf6` 
-  
+  `https://readmecodegen.vercel.app/api/social-icon?name=linkedin&bg=%238b5cf6`
+
   adds a purple background to the LinkedIn icon.
 
 - **When to use it:** Use this parameter when the icon's default appearance doesn't provide enough contrast against your background or when you want to integrate the icon seamlessly into your page design.
@@ -191,6 +193,21 @@ In this example, `%ff0000` sets the Twitter icon's color to red.
 
 - **When to use it:** Use `horizontal` for inline text layouts and `vertical` for stacked or centered layouts.
 
+### 9. `textColor` (optional)
+
+- **What it is:** A hex color code (without the `#`) to customize the text color. By default, text uses the same color as the icon (brand color).
+
+- **Why use it?** By default, text inherits the icon's color. This parameter allows you to override the default text color with a color of your choice for better contrast or design consistency.
+
+- **How to use it:**
+  `https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textColor=ff0000`
+
+  In this example, `ff0000` sets the text color to red while the icon remains in its brand color.
+
+- **When to use it:** Use this parameter when you want text to have a different color than the icon, such as for better readability, contrast, or to match your design theme.
+
+- **Note:** The `textColor` parameter only takes effect when text is being displayed (`showText=true` or `text` parameter is provided).
+
 ---
 
 ## Usage Examples
@@ -255,6 +272,26 @@ This is the default appearance of the icon. It uses the brand's official color, 
 
 ```markdown
 ![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=vertical)
+```
+
+### Text Color Examples
+
+#### Default Text Color (Brand Color)
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true)
+```
+
+#### Custom Text Color
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textColor=ff0000)
+```
+
+#### Text with Custom Color and Background
+
+```markdown
+![github](https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textColor=ffffff&bg=%238b5cf6&shape=circle)
 ```
 
 ### Text with Backgrounds
@@ -325,7 +362,7 @@ This is the default appearance of the icon. It uses the brand's official color, 
 - **Font Family**: Arial, sans-serif
 - **Font Size**: 9px for horizontal, 9px for vertical
 - **Font Weight**: 500 (medium)
-- **Color**: Inherits the icon color by default
+- **Color**: Inherits the icon color by default, can be customized with `textColor` parameter
 - **Text Anchor**:
   - Horizontal: `start` (left-aligned)
   - Vertical: `middle` (center-aligned)
@@ -462,6 +499,8 @@ This is the default appearance of the icon. It uses the brand's official color, 
 - **Text with icon name:** `https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textAlignment=horizontal&size=40`
 - **Custom text with vertical alignment and background:** `https://readmecodegen.vercel.app/api/social-icon?name=twitter&text=Follow&textAlignment=vertical&bg=%238b5cf6&shape=circle`
 - **Complex text example:** `https://readmecodegen.vercel.app/api/social-icon?name=linkedin&text=Connect&textAlignment=horizontal&color=ffffff&theme=dark&bg=%230077b5&size=48`
+- **Text with custom color:** `https://readmecodegen.vercel.app/api/social-icon?name=github&showText=true&textColor=ff0000&size=40`
+- **Text with background and custom color:** `https://readmecodegen.vercel.app/api/social-icon?name=twitter&text=Follow&textColor=ffffff&bg=%238b5cf6&shape=circle&size=48`
 
 ---
 
@@ -480,6 +519,8 @@ This is the default appearance of the icon. It uses the brand's official color, 
 - Use `textAlignment=horizontal` for inline text layouts and `textAlignment=vertical` for stacked layouts.
 - Keep text concise for better visual balance, especially with horizontal alignment.
 - Consider using backgrounds with text to improve readability and visual appeal.
+- Use `textColor` parameter when you need better contrast or want text to match your design theme.
+- Text color defaults to the icon's brand color for consistency, but can be customized for specific design needs.
 
 ---
 
@@ -560,6 +601,12 @@ A: The `shape` parameter only works when you specify a background color using th
 
 **Q: Can I use text with any icon?**
 A: Yes! The text feature works with all available icons. Use `showText=true` to display the icon name, or `text=anything` for custom text.
+
+**Q: How do I customize text color?**
+A: Use the `textColor` parameter with a hex color code (without `#`). By default, text inherits the icon's color. Example: `&textColor=ff0000` for red text.
+
+**Q: When should I use custom text colors?**
+A: Use custom text colors when you need better contrast, want to match your design theme, or when the default brand color doesn't provide sufficient readability.
 
 **Q: How do I encode special characters in text?**
 A: Use URL encoding for special characters. For example, spaces become `%20`, and special symbols should be properly encoded.
